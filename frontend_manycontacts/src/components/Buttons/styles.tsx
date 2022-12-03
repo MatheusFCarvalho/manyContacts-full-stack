@@ -10,7 +10,6 @@ padding: 5px;
 button{
     width: 100%;
     height: 27px;
-    align-self: flex-end;
 }
 
 

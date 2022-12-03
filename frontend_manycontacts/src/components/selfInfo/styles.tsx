@@ -8,7 +8,10 @@ flex-direction: column;
 gap: 5px;
 padding: 5px;
 
-button{
+button {
+    width: 50%;
+}
+.iconButton{
     width: 30px;
     height: 27px;
     align-self: flex-end;

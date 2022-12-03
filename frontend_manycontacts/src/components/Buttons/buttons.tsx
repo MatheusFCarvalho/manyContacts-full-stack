@@ -8,10 +8,10 @@ function Buttons({ props }: IPropsButtonGeted) {
         setIsOculted(!isOculted)
     }
     return <Container>
-        <button>Adicionar contato</button>
-        <button>Gerar relatório</button>
         {!isOculted && <button onClick={toggleIsOculted}>Mostrar</button>}
         {isOculted && <button onClick={toggleIsOculted}>Ocultar</button>}
+        <button>Adicionar contato</button>
+        <button>DELETAR CLIENTE</button>
 
     </Container>
 }

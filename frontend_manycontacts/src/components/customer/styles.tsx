@@ -13,6 +13,7 @@ h2{
 }
 
 width: 350px;
+height: fit-content;
 gap: 15px;
 padding: 5px;
 `

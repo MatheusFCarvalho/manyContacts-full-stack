@@ -1,11 +1,38 @@
+export interface IDataClient {
+    id: string;
+    nome: string;
+    emails: {
+        email: string;
+        id: string;
+    }[];
+    telefones: {
+        telefone: string;
+        id: string;
+    }[];
+    data: string;
+}
+
+export interface IDataContact {
+    id: string;
+    nome: string;
+    emails: {
+        email: string;
+        id: string;
+    }[];
+    telefones: {
+        telefone: string;
+        id: string;
+    }[];
+}
+
 export interface IPropsSelfInfo {
     isOculted: boolean
-    dataClient: string[]
+    dataClient: IDataClient
 }
 export interface IPropsSelfInfoGeted {
     props: {
         isOculted: boolean
-        dataClient: string[]
+        dataClient: IDataClient
 
     }
 }
@@ -23,17 +50,30 @@ export interface IPropsButtonGeted {
 }
 
 
-
 export interface IPropsContactGeted {
-    props: { contacts: string[][] }
+    props: { dataContacts: IDataContact[] }
 }
 export interface IPropsContacts {
-    contacts: string[][]
+    dataContacts: IDataContact[]
 }
 
 export interface IPropsOneContacts {
-    dataContact: string[]
+    dataContact: IDataContact
 }
 export interface IPropsOneContactGeted {
-    props: { dataContact: string[] }
-} 
+    props: { dataContact: IDataContact }
+}
+
+export interface IpropsInputGeted {
+    name: string
+    label: string
+    type: string
+    register: any
+    placeholder: string
+    error: any
+
+}
+export interface IpropsDinamicUpdate {
+    props: string[]
+
+}

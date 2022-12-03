@@ -7,14 +7,20 @@ display: flex;
 flex-direction: column;
 gap: 5px;
 padding: 5px;
-button {
-    width: 50%;
-}
-.iconButton{
-    width: 30px;
+height: fit-content;
+
+h3{text-align:center;}
+
+button{
+    width: 100%;
     height: 27px;
-    align-self: flex-end;
 }
+
+
+input{
+    margin-bottom: 5px;
+}
+
 
 
 `
