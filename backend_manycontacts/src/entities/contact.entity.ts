@@ -18,17 +18,15 @@ class Contact {
     @Column()
     name: string;
 
-    @OneToMany((type) => EmailContact, (email) => email.contact)
-    email: EmailContact[];
+    @OneToMany((type) => EmailContact, (email) => email.contact, { eager: true })
+    emails: EmailContact[];
 
-    @OneToMany((type) => PhoneContact, (phone) => phone.contact)
-    phone: PhoneContact[];
+    @OneToMany((type) => PhoneContact, (phone) => phone.contact, { eager: true })
+    phones: PhoneContact[];
 
-    @ManyToOne((type) => Client, { nullable: false })
+    @ManyToOne((type) => Client, { nullable: false, onDelete: "CASCADE" })
     client: Client;
 
-    @CreateDateColumn()
-    createdAt: Date;
 }
 
 export default Contact;

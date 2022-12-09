@@ -12,16 +12,10 @@ class EmailClient {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
-    @Column()
-    name: string;
-
     @Column({ unique: true })
     email: string;
 
-    @CreateDateColumn()
-    createdAt: Date;
-
-    @ManyToOne((type) => Client, { nullable: false, eager: true })
+    @ManyToOne((type) => Client, { nullable: false, onDelete: "CASCADE" })
     client: Client;
 
 }

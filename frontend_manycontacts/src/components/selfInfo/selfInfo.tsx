@@ -1,34 +1,36 @@
 import { Container } from "./styles"
-import { FaPencilAlt } from 'react-icons/fa';
-import { IPropsSelfInfo, IPropsSelfInfoGeted } from "../../interfaces/props";
+import { IPropsSelfInfoGeted } from "../../interfaces/props";
 import { useState } from "react";
 import NewEmailOrPhone from "../NewEmailOrPhone/NewEmailOrPhone";
-import DinamicUpdate from "../DinamicUpdate/dinamicUpdate";
+import Phone from "../Phone/phone";
+import Email from "../Email/email";
+import { deletingClient } from "../../utils/deletingApi";
 
 function SelfInfo({ props }: IPropsSelfInfoGeted) {
     const { isOculted, dataClient } = props
-    const [isUpdating, setIsUpdating] = useState(false)
+    const { name, emails, phones, createdAt, id } = dataClient
 
-    const { nome, emails, telefones, data } = dataClient
+    const [emailsState, setEmailsState] = useState(emails)
+    const [phonesState, setPhonesState] = useState(phones)
 
-    const toggleUpdating = () => {
-        setIsUpdating(!isUpdating)
-    }
+    const modifierEmails = { emailsState, setEmailsState, type: 'clients' }
+    const modifierPhones = { phonesState, setPhonesState, type: 'clients' }
+
+    const deleteClient = () => { deletingClient({ props }) }
+    const propsNewEmailPhone = { emailsState, setEmailsState, phonesState, setPhonesState, id, type: 'clients' }
 
     return <Container>
-        <p>{nome}</p>
-        {isOculted && emails.map((obj) => <p key={obj.id}>{obj.email}</p>)}
-        {isOculted && telefones.map((obj) => <p key={obj.id}>{obj.telefone}</p>)}
+        <p>{name}</p>
+        {isOculted && emailsState.map((email) => <Email key={email.id} props={{ email, modifierEmails }} />)}
+        {isOculted && phonesState.map((phone) => <Phone key={phone.id} props={{ phone, modifierPhones }} />)}
         {/* {isUpdating && <DinamicUpdate props={dataClient} />} */}
 
 
 
-        {isOculted && <NewEmailOrPhone />}
+        {isOculted && <NewEmailOrPhone props={propsNewEmailPhone} />}
+        {isOculted && <button onClick={deleteClient} className="fullBtn">Deletar cliente</button>}
+        <span>{createdAt.slice(0, 10)}</span>
 
-        <div className="lastLine">
-            <span>{data}</span>
-            {isOculted && <button className="iconButton" onClick={toggleUpdating}><FaPencilAlt /></button>}
-        </div>
 
     </Container>
 }

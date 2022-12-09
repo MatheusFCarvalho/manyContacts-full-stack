@@ -11,6 +11,10 @@ padding: 5px;
 button {
     width: 50%;
 }
+
+.fullBtn {
+    width: 100%;
+}
 .iconButton{
     width: 30px;
     height: 27px;

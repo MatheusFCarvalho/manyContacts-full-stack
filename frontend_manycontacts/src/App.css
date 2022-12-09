@@ -2,8 +2,9 @@
   background-color: #282c34;
   color: white;
   min-height: 100vh;
-  padding: 50px;
+  padding: 0px;
   display: flex;
+  flex-direction: column;
 }
 
 :root {

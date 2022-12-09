@@ -13,17 +13,11 @@ class EmailContact {
     id: string;
 
     @Column()
-    name: string;
-
-    @Column({ unique: true })
     email: string;
 
-    @CreateDateColumn()
-    createdAt: Date;
 
-    @ManyToOne((type) => Contact, { nullable: false, eager: true })
+    @ManyToOne((type) => Contact, { nullable: false, onDelete: "CASCADE" })
     contact: Contact;
-
 }
 
 export default EmailContact;

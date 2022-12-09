@@ -17,13 +17,13 @@ class Client {
     @Column()
     name: string;
 
-    @OneToMany((type) => EmailClient, (email) => email.client)
+    @OneToMany((type) => EmailClient, (email) => email.client, { eager: true })
     emails: EmailClient[];
 
-    @OneToMany((type) => PhoneClient, (phone) => phone.client)
+    @OneToMany((type) => PhoneClient, (phone) => phone.client, { eager: true })
     phones: PhoneClient[];
 
-    @OneToMany((type) => Contact, (contact) => contact.client)
+    @OneToMany((type) => Contact, (contact) => contact.client, { eager: true })
     contacts: Contact[];
 
     @CreateDateColumn()

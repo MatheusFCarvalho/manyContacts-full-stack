@@ -1,27 +1,41 @@
 import { Container } from "./styles"
-import { useState } from 'react'
 
 import * as yup from 'yup';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import Input from "../Input/Input";
+import { IPropsRegisterForms } from "../../interfaces/props";
+import { api } from "../../utils/api";
+import { toast } from "react-toastify";
 
-function FormsRegister() {
+function FormsRegister({ props }: IPropsRegisterForms) {
+    const { isCreating, setIsCreating, type } = props
 
-    const [schemaShape, setSchemaShape] = useState({
-        name: yup.string().required("Nome obrigatório"),
-        email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
-        cellphone: yup.string().required("Telefone obrigatório"),
-    })
+    const closeForm = () => {
+        setIsCreating(!isCreating)
+    }
+
+    const schemaShape = {
+        name: yup.string().required("Nome obrigatório."),
+        email: yup.string().required("E-mail obrigatório.").email("E-mail inválido"),
+        phone: yup.string().matches(/(\d{2})(\d{1})(\d{4})(\d{4})/, "Apenas os numeros.").required("Celular obrigatório").max(11),
+    }
 
     const formSchema = yup.object().shape(schemaShape);
 
     const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(formSchema) });
 
-    const onSubmitFunction = (data: any) => console.log(data);
+    const onSubmitFunction = (data: any) => {
+        api.post(`/${type}`, data).then((response) => {
+            toast("✔️ Registrado com sucesso")
+        });
+        closeForm()
+    }
 
     return <Container >
-        <h3>Registrar</h3>
+        <>
+            <h3>Registrar</h3>
+        </>
         <form className="form" onSubmit={handleSubmit(onSubmitFunction)}>
             <Input
                 name="name"
@@ -36,18 +50,23 @@ function FormsRegister() {
                 label="Email"
                 type="email"
                 register={register}
-                placeholder="Digite seu nome"
+                placeholder="Digite seu email"
                 error={errors.email?.message}
             />
             <Input
-                name="cellphone"
-                label="Telefone"
-                type="cellphone"
+                name="phone"
+                label="Celular"
+                type="phone"
                 register={register}
-                placeholder="Digite seu nome"
-                error={errors.cellphone?.message}
+                placeholder="Digite seu celular"
+                error={errors.phone?.message}
+                maxlength={11}
             />
-            <button type="submit">Enviar!</button>
+            <div className="buttons">
+                <button type="submit">Enviar!</button>
+                <button onClick={closeForm}>Cancelar!</button>
+
+            </div>
         </form>
     </Container>
 }

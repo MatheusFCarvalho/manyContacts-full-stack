@@ -13,16 +13,9 @@ class PhoneContact {
     id: string;
 
     @Column()
-    name: string;
+    phone: string;
 
-    @Column({ unique: true })
-    email: string;
-
-
-    @CreateDateColumn()
-    createdAt: Date;
-
-    @ManyToOne((type) => Contact, { nullable: false, eager: true })
+    @ManyToOne((type) => Contact, { nullable: false, onDelete: "CASCADE" })
     contact: Contact;
 
 }
