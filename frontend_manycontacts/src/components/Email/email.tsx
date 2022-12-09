@@ -1,8 +1,7 @@
-import { FaCheck, FaCut, FaPencilAlt, FaWindowClose } from 'react-icons/fa';
+import { FaPencilAlt } from 'react-icons/fa';
 import { IEmail, IEmailProps } from "../../interfaces/props";
 import { useState } from "react";
 import { Container } from './styles';
-import { api } from '../../utils/api';
 import { deletingEmail } from '../../utils/deletingApi';
 import { changeEmailApi } from '../../utils/updatingApi';
 

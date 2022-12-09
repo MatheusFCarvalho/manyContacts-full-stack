@@ -1,5 +1,4 @@
 import { Container } from "./styles"
-import { FaPencilAlt } from 'react-icons/fa';
 import { IPropsOneContactGeted } from "../../interfaces/props";
 import NewEmailOrPhone from "../NewEmailOrPhone/NewEmailOrPhone";
 import Phone from "../Phone/phone";
@@ -20,7 +19,7 @@ function OneContact({ props }: IPropsOneContactGeted) {
     const deleteContact = () => { deletingContact({ props }) }
 
     return <Container>
-        <p>{name} <FaPencilAlt /></p>
+        <p>{name}</p>
         {!!emails && emailsState.map((email) => <Email key={email.id} props={{ email, modifierEmails }} />)}
         {!!phones && phonesState.map((phone) => <Phone key={phone.id} props={{ phone, modifierPhones }} />)}
         <NewEmailOrPhone props={propsNewEmailPhone} />

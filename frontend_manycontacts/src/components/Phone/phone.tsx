@@ -1,8 +1,7 @@
-import { FaCheck, FaCut, FaPencilAlt, FaWindowClose } from 'react-icons/fa';
+import { FaPencilAlt } from 'react-icons/fa';
 import { IPhone, IPhoneProps } from "../../interfaces/props";
 import { useState } from "react";
 import { Container } from './styles';
-import { api } from '../../utils/api';
 import { deletingPhone } from '../../utils/deletingApi';
 import { changePhoneApi } from '../../utils/updatingApi';
 
