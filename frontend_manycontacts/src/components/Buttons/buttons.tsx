@@ -1,10 +1,8 @@
-import { IPropsButton, IPropsButtonGeted } from "../../interfaces/props"
+import { IPropsButtonGeted } from "../../interfaces/props"
 import { Container } from "./styles"
-import { useState } from 'react'
-import FormsRegister from "../FormsRegister/FormsRegister"
 
 function Buttons({ props }: IPropsButtonGeted) {
-    const { isOculted, setIsOculted, dataClient, modifierProps } = props
+    const { isOculted, setIsOculted } = props
 
     const toggleIsOculted = () => {
         setIsOculted(!isOculted)
