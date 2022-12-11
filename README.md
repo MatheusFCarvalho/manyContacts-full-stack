@@ -30,7 +30,7 @@ No terminal utilizar o comando
 yarn install
 ```
      (Aguardar a instalação dos pacotes)
-#### 2.1.2. Instalando dependências
+#### 2.1.2. Configurando variaveis de ambiente
 Em seguida, crie um arquivo **.env**, copiando o formato do arquivo **.env.example**:
 
 ```
@@ -71,7 +71,7 @@ No terminal utilizar o comando
 ```shell
 yarn install
 ```
-#### 2.2.2. Rode o frontEnd
+#### 2.2.2. Rodando o projeto frontEnd
 
 
 Utilize o comando
@@ -82,9 +82,3 @@ yarn start
 como o backend está utilizando a porta 3000,Confirme a primeira pergunta para utilizar outra porta no frontEnd.
 Pronto a aplicação irá abrir em seu navegador padrão e poderá utilizar!
 
-
-
-     (Aguardar a instalação dos pacotes)
-
- *Preparando o FrontEnd
-4.Utilizar o comando 'yarn start'
